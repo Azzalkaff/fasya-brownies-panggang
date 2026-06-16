@@ -12,7 +12,7 @@ export function ProductCard({ product }: ProductCardProps) {
     <div className="flex flex-col bg-[#F6F6F6] rounded-[32px] overflow-hidden p-6 transition-transform duration-300 hover:-translate-y-1">
       <div className="relative w-full aspect-square md:aspect-[4/3] mb-6 flex items-center justify-center mix-blend-multiply">
         <Image 
-          src={product.image} 
+          src={product.baseImage} 
           alt={product.name}
           fill
           className="object-contain"
@@ -21,7 +21,7 @@ export function ProductCard({ product }: ProductCardProps) {
       </div>
       <div className="flex flex-col mt-auto">
         <h3 className="font-heading text-xl font-bold text-[#2A4D40] mb-2">{product.name}</h3>
-        <span className="font-bold text-[#C85A42]">{formatPrice(product.price)}</span>
+        <span className="font-bold text-[#C85A42]">{formatPrice(product.variants?.[0]?.price || 0)}</span>
       </div>
     </div>
   )
