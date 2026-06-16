@@ -32,10 +32,10 @@ export function BrandPromiseSection() {
         <section id="tentang-kami" className="py-24 md:py-32 bg-brand-background overflow-hidden">
             <div className="container mx-auto px-6 max-w-[1200px]">
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.6 }}
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     className="mb-20"
                 >
                     <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-brand-border/40 pb-12">
@@ -50,14 +50,27 @@ export function BrandPromiseSection() {
                     </div>
                 </motion.div>
 
-                <div className="flex flex-col">
+                <motion.div 
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, margin: "-50px" }}
+                    variants={{
+                        hidden: { opacity: 0 },
+                        show: {
+                            opacity: 1,
+                            transition: { staggerChildren: 0.15 }
+                        }
+                    }}
+                    className="flex flex-col"
+                >
                     {promises.map((promise, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-50px" }}
-                            transition={{ duration: 0.6, delay: index * 0.1 }}
+                            variants={{
+                                hidden: { opacity: 0, y: 40, scale: 0.98 },
+                                show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+                            }}
+                            whileHover={{ scale: 1.01, transition: { type: "spring", stiffness: 400, damping: 30 } }}
                             className="group flex flex-col md:flex-row items-start md:items-center py-10 md:py-14 border-b border-brand-border/40 hover:border-brand-primary transition-colors duration-500 cursor-default"
                         >
                             {/* Large Number & Icon */}
@@ -92,7 +105,7 @@ export function BrandPromiseSection() {
                             </div>
                         </motion.div>
                     ))}
-                </div>
+                </motion.div>
 
             </div>
         </section>

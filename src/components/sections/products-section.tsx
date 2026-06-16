@@ -21,11 +21,11 @@ function ProductSpotlight({ product, isEven }: { product: Product, isEven: boole
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-16 lg:gap-24 group`}
+            className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-6 md:gap-16 lg:gap-24 group`}
         >
             {/* Huge Image */}
             <div className="w-full md:w-1/2 flex items-center justify-center">
-                <div className="relative w-full aspect-square md:aspect-[4/3] overflow-visible">
+                <div className="relative w-full aspect-[4/3] overflow-visible">
                     <AnimatePresence mode="popLayout">
                         <motion.div
                             key={activeImage}
@@ -68,26 +68,26 @@ function ProductSpotlight({ product, isEven }: { product: Product, isEven: boole
 
             {/* Minimalist Typography */}
             <div className={`w-full md:w-1/2 flex flex-col ${isEven ? 'items-start text-left' : 'items-start md:items-end md:text-right'}`}>
-                <span className="text-brand-primary font-bold tracking-[0.2em] uppercase text-xs mb-4">
+                <span className="text-brand-primary font-bold tracking-[0.2em] uppercase text-xs mb-2 md:mb-4">
                     {product.isPopular ? "Best Seller" : "Classic Collection"}
                 </span>
-                <h3 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-brand-secondary mb-6 group-hover:text-brand-primary transition-colors duration-500">
+                <h3 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-brand-secondary mb-3 md:mb-6 group-hover:text-brand-primary transition-colors duration-500">
                     {product.name}
                 </h3>
-                <p className="text-brand-text-secondary text-lg leading-relaxed mb-8 max-w-[400px]">
+                <p className="text-brand-text-secondary text-base md:text-lg leading-relaxed mb-5 md:mb-8 max-w-[400px]">
                     {product.description}
                 </p>
 
                 {/* Variant Selectors (Segmented Control Style) */}
                 {product.variants.length > 1 && (
-                    <div className={`flex flex-wrap gap-2 mb-8 ${isEven ? 'justify-start' : 'justify-start md:justify-end'} w-full p-1 bg-brand-border/20 rounded-full inline-flex md:w-auto w-max`}>
+                    <div className={`flex flex-wrap gap-1 sm:gap-2 mb-6 md:mb-8 ${isEven ? 'justify-start' : 'justify-start md:justify-end'} w-full md:inline-flex md:w-auto p-1 bg-brand-border/20 rounded-xl md:rounded-full`}>
                         {product.variants.map((variant, idx) => {
                             const isActive = idx === selectedVariantIdx;
                             return (
                                 <button
                                     key={variant.id}
                                     onClick={() => setSelectedVariantIdx(idx)}
-                                    className={`relative px-5 py-2 rounded-full text-sm font-bold transition-colors duration-300 ${
+                                    className={`relative px-3 py-1.5 sm:px-5 sm:py-2 rounded-lg md:rounded-full text-xs sm:text-sm font-bold transition-colors duration-300 flex-1 min-w-fit md:flex-none ${
                                         isActive ? "text-brand-secondary-dark" : "text-brand-text-secondary hover:text-brand-primary"
                                     }`}
                                 >
@@ -144,11 +144,8 @@ function ProductGridCard({ product }: { product: Product }) {
     const { addToCart } = useCart()
 
     return (
-        <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            className="bg-white rounded-3xl p-6 flex flex-col h-full border border-brand-border/20 shadow-sm hover:shadow-xl transition-all duration-300 group"
+        <div 
+            className="bg-white rounded-3xl p-6 flex flex-col h-full border border-brand-border/20 shadow-sm hover:shadow-xl transition-all duration-500 group cursor-default"
         >
             <div className="relative w-full aspect-square mb-6 overflow-hidden rounded-2xl bg-brand-background/50">
                 <div 
@@ -185,29 +182,28 @@ function ProductGridCard({ product }: { product: Product }) {
                 
                 {product.variants.length > 1 && (
                     <div className="mb-4">
-                        <select 
-                            value={selectedVariantIdx}
-                            onChange={(e) => setSelectedVariantIdx(Number(e.target.value))}
-                            className="w-full bg-brand-background border border-brand-border/50 text-brand-secondary text-sm font-medium rounded-xl px-4 py-2.5 focus:outline-none focus:border-brand-primary cursor-pointer transition-colors"
-                        >
+                        <div className="flex flex-wrap gap-1 p-1 bg-brand-background rounded-xl w-full border border-brand-border/30">
                             {product.variants.map((v, idx) => (
-                                <option key={v.id} value={idx}>{v.name} - {formatPrice(v.price)}</option>
+                                <button
+                                    key={v.id}
+                                    onClick={() => setSelectedVariantIdx(idx)}
+                                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all duration-300 flex-1 min-w-fit ${
+                                        selectedVariantIdx === idx 
+                                        ? 'bg-brand-primary text-brand-secondary-dark shadow-sm' 
+                                        : 'text-brand-text-secondary hover:text-brand-secondary hover:bg-black/5'
+                                    }`}
+                                >
+                                    {v.name}
+                                </button>
                             ))}
-                        </select>
+                        </div>
                     </div>
                 )}
                 
                 <div className="flex items-center justify-between mt-auto pt-4 border-t border-brand-border/20">
-                    {product.variants.length === 1 ? (
-                        <span className="font-bold text-brand-secondary text-lg">
-                            {formatPrice(activeVariant.price)}
-                        </span>
-                    ) : (
-                        <div className="flex flex-col">
-                            <span className="text-[10px] text-brand-text-muted uppercase tracking-wider font-bold mb-1">Mulai dari</span>
-                            <span className="font-bold text-brand-secondary text-lg leading-none">{formatPrice(product.variants[0].price)}</span>
-                        </div>
-                    )}
+                    <span className="font-bold text-brand-secondary text-lg">
+                        {formatPrice(activeVariant.price)}
+                    </span>
                     
                     <button 
                         onClick={() => addToCart(product, activeVariant)}
@@ -218,7 +214,7 @@ function ProductGridCard({ product }: { product: Product }) {
                     </button>
                 </div>
             </div>
-        </motion.div>
+        </div>
     )
 }
 
@@ -260,7 +256,9 @@ export function ProductsSection() {
                             <h3 className="font-heading text-3xl md:text-5xl font-bold text-brand-secondary">Menu Lainnya</h3>
                         </div>
                         
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                        <div 
+                            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+                        >
                             {gridProducts.map(product => (
                                 <ProductGridCard key={product.id} product={product} />
                             ))}

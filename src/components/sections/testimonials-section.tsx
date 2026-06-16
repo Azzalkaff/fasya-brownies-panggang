@@ -2,7 +2,7 @@
 import * as React from "react"
 import { testimonials } from "@/data/testimonials"
 import { motion, AnimatePresence } from "framer-motion"
-import { Quote } from "lucide-react"
+import { Quote, Star } from "lucide-react"
 
 export function TestimonialsSection() {
   const [currentIndex, setCurrentIndex] = React.useState(0)
@@ -38,11 +38,34 @@ export function TestimonialsSection() {
               transition={{ duration: 1, ease: "easeInOut" }}
               className="absolute w-full text-center flex flex-col items-center"
             >
-              <h3 className="font-sans text-xl md:text-3xl lg:text-4xl font-light text-white leading-relaxed md:leading-relaxed mb-12 tracking-wide text-balance">
+              <div className="flex gap-1.5 mb-8 justify-center">
+                {[...Array(5)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, scale: 0.5, rotate: -30 }}
+                    animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                    transition={{ delay: i * 0.1, duration: 0.5, type: "spring" }}
+                  >
+                    <Star className="w-5 h-5 md:w-6 md:h-6 text-brand-primary fill-brand-primary" />
+                  </motion.div>
+                ))}
+              </div>
+
+              <motion.h3 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                className="font-sans text-xl md:text-3xl lg:text-4xl font-light text-white leading-relaxed md:leading-relaxed mb-12 tracking-wide text-balance"
+              >
                 "{testimonials[currentIndex].review}"
-              </h3>
+              </motion.h3>
               
-              <div className="flex flex-col items-center gap-2">
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.6 }}
+                className="flex flex-col items-center gap-2"
+              >
                 <div className="w-8 h-[1px] bg-brand-primary mb-4"></div>
                 <span className="text-brand-primary font-bold tracking-[0.2em] uppercase text-sm">
                   {testimonials[currentIndex].name}
@@ -50,7 +73,7 @@ export function TestimonialsSection() {
                 <span className="text-white/50 text-xs tracking-widest uppercase mt-1">
                   Verified Customer
                 </span>
-              </div>
+              </motion.div>
             </motion.div>
           </AnimatePresence>
         </div>

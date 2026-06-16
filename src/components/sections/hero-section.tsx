@@ -61,7 +61,10 @@ export function HeroSection() {
 
             {/* Full Section Background Image */}
             <div className="absolute inset-0 w-full h-full z-0">
-                <img
+                <motion.img
+                    initial={{ scale: 1.05 }}
+                    animate={{ scale: 1 }}
+                    transition={{ duration: 1.5, ease: "easeOut" }}
                     src="/main.png"
                     alt="Fasya Brownies Background"
                     className="w-full h-full object-cover"
@@ -113,23 +116,38 @@ export function HeroSection() {
 
                     {/* Elevated Trust Badges */}
                     <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.4 }}
+                        initial="hidden"
+                        animate="show"
+                        variants={{
+                            hidden: { opacity: 0 },
+                            show: {
+                                opacity: 1,
+                                transition: { staggerChildren: 0.15, delayChildren: 0.4 }
+                            }
+                        }}
                         className="mt-8 flex flex-wrap items-center justify-center gap-4 sm:gap-8"
                     >
-                        <div className="flex items-center gap-3 bg-black/40 backdrop-blur-sm border border-white/10 px-5 py-3 rounded-2xl shadow-lg">
+                        <motion.div variants={{
+                            hidden: { opacity: 0, y: 20 },
+                            show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+                        }} className="flex items-center gap-3 bg-black/40 backdrop-blur-sm border border-white/10 px-5 py-3 rounded-2xl shadow-lg hover:bg-black/60 transition-colors">
                             <ShieldCheck className="w-6 h-6 text-brand-primary" />
                             <span className="text-white text-sm font-bold tracking-wide">100% Halal</span>
-                        </div>
-                        <div className="flex items-center gap-3 bg-black/40 backdrop-blur-sm border border-white/10 px-5 py-3 rounded-2xl shadow-lg">
+                        </motion.div>
+                        <motion.div variants={{
+                            hidden: { opacity: 0, y: 20 },
+                            show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+                        }} className="flex items-center gap-3 bg-black/40 backdrop-blur-sm border border-white/10 px-5 py-3 rounded-2xl shadow-lg hover:bg-black/60 transition-colors">
                             <ChefHat className="w-6 h-6 text-brand-primary" />
                             <span className="text-white text-sm font-bold tracking-wide">Freshly Baked</span>
-                        </div>
-                        <div className="flex items-center gap-3 bg-black/40 backdrop-blur-sm border border-white/10 px-5 py-3 rounded-2xl shadow-lg">
+                        </motion.div>
+                        <motion.div variants={{
+                            hidden: { opacity: 0, y: 20 },
+                            show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+                        }} className="flex items-center gap-3 bg-black/40 backdrop-blur-sm border border-white/10 px-5 py-3 rounded-2xl shadow-lg hover:bg-black/60 transition-colors">
                             <Leaf className="w-6 h-6 text-brand-primary" />
                             <span className="text-white text-sm font-bold tracking-wide">Premium Recipe</span>
-                        </div>
+                        </motion.div>
                     </motion.div>
                 </div>
             </div>

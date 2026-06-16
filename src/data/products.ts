@@ -2,16 +2,16 @@ import { Product } from "@/types/product";
 
 export const products: Product[] = [
   {
-    id: "Brownies Sekat Original",
-    name: "Brownies Sekat Original",
-    description: "Brownies panggang dengan tekstur fudgy di dalam dan crusty di luar, menggunakan 100% coklat premium.",
+    id: "Brownies Sekat",
+    name: "Brownies Sekat",
+    description: "Fudgy di dalam, crusty di luar. Dibuat dengan 100% coklat premium pilihan.",
     baseImage: "/images/brownie-sekat-large.png",
     hoverImage: "/images/brownie-sekat-large-bitten.png",
     isPopular: true,
     variants: [
-      { id: "v1-small", name: "Small", price: 30000, image: "/images/brownie-sekat-small.png", hoverImage: "/images/brownie-sekat-small-bitten.png" },
-      { id: "v1-reg", name: "Reguler", price: 60000, image: "/images/brownie-sekat-medium.png", hoverImage: "/images/brownie-sekat-medium-bitten.png" },
-      { id: "v1-lrg", name: "Large", price: 120000, image: "/images/brownie-sekat-large.png", hoverImage: "/images/brownie-sekat-large-bitten.png" },
+      { id: "v1-small", name: "Small (9)", price: 40000, image: "/images/brownie-sekat-small.png", hoverImage: "/images/brownie-sekat-small-bitten.png" },
+      { id: "v1-reg", name: "Medium (18)", price: 70000, image: "/images/brownie-sekat-medium.png", hoverImage: "/images/brownie-sekat-medium-bitten.png" },
+      { id: "v1-lrg", name: "Jumbo (36)", price: 135000, image: "/images/brownie-sekat-large.png", hoverImage: "/images/brownie-sekat-large-bitten.png" },
     ],
   },
   {
@@ -21,7 +21,7 @@ export const products: Product[] = [
     baseImage: "/images/brownie-original.png",
     hoverImage: "/images/brownie-original-bitten.png",
     variants: [
-      { id: "v5-reg", name: "Reguler", price: 55000 }
+      { id: "v5-reg", name: "Reguler", price: 62000 }
     ],
   },
   {
@@ -31,17 +31,18 @@ export const products: Product[] = [
     baseImage: "/images/brownie-creamcheese.png",
     hoverImage: "/images/brownie-creamcheese-bitten.png", // Versi digigit
     variants: [
-      { id: "v2-reg", name: "Reguler (20x10)", price: 75000 },
+      { id: "v2-reg", name: "Reguler", price: 80000 },
     ],
   },
   {
     id: "Bolu Ketan Hitam Lumer",
-    name: "Bolu Ketan Hitam Lumer",
+    name: "Bolu Ketan Keju Lumer",
     description: "Kombinasi kaya rasa antara bolu ketan hitam dengan lapisan keju lumer yang lembut dan gurih.",
     baseImage: "/images/bolu-ketan-hitam-lumer-new.png",
     hoverImage: "", // Versi digigit
     variants: [
-      { id: "v3-reg", name: "Reguler", price: 120000 },
+      { id: "v3-small", name: "Small", price: 40000 },
+      { id: "v3-med", name: "Medium", price: 80000 },
     ],
   },
   {
@@ -66,22 +67,26 @@ export const products: Product[] = [
   },
   {
     id: "Soes Vanilla",
-    name: "Soes Vanilla 6 pcs",
+    name: "Soes Vanilla",
     description: "Paduan soes dengan fla vanilla yang lembut dan gurih.",
     baseImage: "/images/soes-vanilla.png",
     hoverImage: "/images/soes-bitten.png", // Versi digigit
     variants: [
-      { id: "v4-reg", name: "Reguler", price: 50000 },
+      { id: "sv-small", name: "Small (4)", price: 35000 },
+      { id: "sv-med", name: "Medium (8)", price: 60000 },
+      { id: "sv-jumbo", name: "Jumbo (16)", price: 115000 },
     ],
   },
   {
     id: "Soes Coklat",
-    name: "Soes Coklat 6 pcs",
+    name: "Soes Coklat",
     description: "Paduan soes dengan fla coklat yang lembut dan gurih.",
     baseImage: "/images/soes-coklat.png",
     hoverImage: "", // Versi digigit
     variants: [
-      { id: "v5-reg", name: "Reguler", price: 50000 },
+      { id: "sc-small", name: "Small (4)", price: 35000 },
+      { id: "sc-med", name: "Medium (8)", price: 60000 },
+      { id: "sc-jumbo", name: "Jumbo (16)", price: 115000 },
     ],
   },
 ];
