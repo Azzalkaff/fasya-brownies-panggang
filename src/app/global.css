@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Sekuya&family=Nunito:wght@400..900&display=swap');
+@import "tailwindcss";
+
+:root {
+  /* Adjustable Theme Colors */
+  --theme-primary: #f6be31;
+  --theme-primary-hover: #fabd22;
+  --theme-secondary: #4A2C1D;
+  --theme-secondary-dark: #2D1A12;
+  --theme-background: #FAF7F2;
+  --theme-surface: #FFFFFF;
+  --theme-surface-alt: #F3EEE7;
+  --theme-border: #E7DDD1;
+  --theme-text-primary: #2B2118;
+  --theme-text-secondary: #5F5448;
+  --theme-text-muted: #8A8178;
+
+  --background: var(--theme-background);
+  --foreground: var(--theme-text-primary);
+}
+
+@theme inline {
+  --color-brand-primary: var(--theme-primary);
+  --color-brand-primary-hover: var(--theme-primary-hover);
+  --color-brand-secondary: var(--theme-secondary);
+  --color-brand-secondary-dark: var(--theme-secondary-dark);
+  --color-brand-background: var(--theme-background);
+  --color-brand-surface: var(--theme-surface);
+  --color-brand-surface-alt: var(--theme-surface-alt);
+  --color-brand-border: var(--theme-border);
+  --color-brand-text-primary: var(--theme-text-primary);
+  --color-brand-text-secondary: var(--theme-text-secondary);
+  --color-brand-text-muted: var(--theme-text-muted);
+
+  --font-heading: "Sekuya", system-ui;
+  --font-sans: "Nunito", sans-serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
