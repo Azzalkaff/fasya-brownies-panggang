@@ -55,7 +55,7 @@ export function LocationSection() {
                         <div className="flex flex-col">
                             <span className="block text-brand-text-muted text-xs tracking-[0.2em] uppercase mb-4 font-semibold">Contact</span>
                             <p className="text-brand-text-secondary leading-relaxed font-medium">
-                                {SITE_CONFIG.whatsapp}
+                                {SITE_CONFIG.phone}
                             </p>
                         </div>
 
