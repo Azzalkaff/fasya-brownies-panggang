@@ -49,6 +49,9 @@ export const metadata: Metadata = {
     description: "Brownies panggang premium yang fudgy dan crusty. Pesan sekarang untuk pengiriman hari ini!",
     images: ["/images/brownie-classic.png"],
   },
+  verification: {
+    google: "5pNmMig_N0u7kVaBi5yn6ensIArBEP8HdPkN64LIBMQ", // TODO: Ganti dengan kode dari Google Search Console (contoh: 5pNmMig_N0u7k...)
+  },
 };
 
 export default function RootLayout({
